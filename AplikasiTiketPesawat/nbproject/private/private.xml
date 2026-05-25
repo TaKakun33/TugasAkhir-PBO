@@ -3,17 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Kuliah%20UNDIP/Semester%204/Tugas/PBO/Project/AplikasiTiketPesawat/src/model/Bandara.java</file>
-            <file>file:/D:/Kuliah%20UNDIP/Semester%204/Tugas/PBO/Project/AplikasiTiketPesawat/src/model/Penerbangan.java</file>
-            <file>file:/D:/Kuliah%20UNDIP/Semester%204/Tugas/PBO/Project/AplikasiTiketPesawat/src/model/Pesawat.java</file>
-            <file>file:/D:/Kuliah%20UNDIP/Semester%204/Tugas/PBO/Project/AplikasiTiketPesawat/src/model/TiketBisnis.java</file>
-            <file>file:/D:/Kuliah%20UNDIP/Semester%204/Tugas/PBO/Project/AplikasiTiketPesawat/src/model/Tiket.java</file>
-            <file>file:/D:/Kuliah%20UNDIP/Semester%204/Tugas/PBO/Project/AplikasiTiketPesawat/src/model/TiketEkonomi.java</file>
-            <file>file:/D:/Kuliah%20UNDIP/Semester%204/Tugas/PBO/Project/AplikasiTiketPesawat/src/dao/PenerbanganDAO.java</file>
-            <file>file:/D:/Kuliah%20UNDIP/Semester%204/Tugas/PBO/Project/AplikasiTiketPesawat/src/dao/TiketDAO.java</file>
-            <file>file:/D:/Kuliah%20UNDIP/Semester%204/Tugas/PBO/Project/AplikasiTiketPesawat/src/controller/TiketController.java</file>
-            <file>file:/D:/Kuliah%20UNDIP/Semester%204/Tugas/PBO/Project/AplikasiTiketPesawat/src/view/MainCLI.java</file>
-            <file>file:/D:/Kuliah%20UNDIP/Semester%204/Tugas/PBO/Project/AplikasiTiketPesawat/src/dao/DatabaseConnection.java</file>
+            <file>file:/D:/Kuliah%20UNDIP/Semester%204/Tugas/PBO/Project/TugasAkhir-PBO/AplikasiTiketPesawat/src/view/MainCLI.java</file>
+            <file>file:/D:/Kuliah%20UNDIP/Semester%204/Tugas/PBO/Project/TugasAkhir-PBO/AplikasiTiketPesawat/src/controller/TiketController.java</file>
+            <file>file:/D:/Kuliah%20UNDIP/Semester%204/Tugas/PBO/Project/TugasAkhir-PBO/AplikasiTiketPesawat/src/dao/TiketDAO.java</file>
+            <file>file:/D:/Kuliah%20UNDIP/Semester%204/Tugas/PBO/Project/TugasAkhir-PBO/AplikasiTiketPesawat/src/model/Tiket.java</file>
+            <file>file:/D:/Kuliah%20UNDIP/Semester%204/Tugas/PBO/Project/TugasAkhir-PBO/AplikasiTiketPesawat/src/model/TiketEkonomi.java</file>
+            <file>file:/D:/Kuliah%20UNDIP/Semester%204/Tugas/PBO/Project/TugasAkhir-PBO/AplikasiTiketPesawat/src/model/TiketBisnis.java</file>
+            <file>file:/D:/Kuliah%20UNDIP/Semester%204/Tugas/PBO/Project/TugasAkhir-PBO/AplikasiTiketPesawat/src/dao/PenerbanganDAO.java</file>
         </group>
     </open-files>
 </project-private>

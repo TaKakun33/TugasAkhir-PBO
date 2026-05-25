@@ -24,7 +24,7 @@ public class PenerbanganDAO {
         List<Penerbangan> daftarPenerbangan = new ArrayList<>();
         
         // Query SQL JOIN
-        String query = "SELECT p.id_penerbangan, p.gate, p.waktu_boarding, p.harga_dasar, " +
+        String query = "SELECT p.id_penerbangan, p.gate, p.waktu_keberangkatan, p.waktu_boarding, p.harga_dasar, " +
                        "b1.kode_bandara AS kode_asal, b1.nama_bandara AS nama_asal, b1.kota AS kota_asal, b1.negara AS negara_asal, " +
                        "b2.kode_bandara AS kode_tujuan, b2.nama_bandara AS nama_tujuan, b2.kota AS kota_tujuan, b2.negara AS negara_tujuan, " +
                        "pes.id_pesawat, pes.nama_maskapai, pes.jenis_pesawat, pes.kapasitas " +
@@ -62,6 +62,7 @@ public class PenerbanganDAO {
                 Penerbangan p = new Penerbangan();
                 p.setIdPenerbangan(rs.getString("id_penerbangan"));
                 p.setGate(rs.getString("gate"));
+                p.setWaktuKeberangkatan(rs.getString("waktu_keberangkatan"));
                 p.setWaktuBoarding(rs.getString("waktu_boarding"));
                 p.setHargaDasar(rs.getDouble("harga_dasar"));
                 p.setAsal(asal);

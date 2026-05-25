@@ -19,6 +19,7 @@ public class Penerbangan {
     private String gate;
     private String waktuBoarding;
     private double hargaDasar;
+    private String waktuKeberangkatan;
 
     public Penerbangan() {}
 
@@ -55,6 +56,14 @@ public class Penerbangan {
         this.pesawat = pesawat;
     }
 
+    public String getWaktuKeberangkatan() {
+        return waktuKeberangkatan;
+    }
+
+    public void setWaktuKeberangkatan(String waktuKeberangkatan) {
+        this.waktuKeberangkatan = waktuKeberangkatan;
+    }
+    
     public String getGate() {
         return gate;
     }
