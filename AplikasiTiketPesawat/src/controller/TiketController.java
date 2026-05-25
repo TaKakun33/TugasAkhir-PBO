@@ -23,8 +23,8 @@ public class TiketController {
         this.tiketDAO = new TiketDAO();
     }
 
-    public List<Penerbangan> cariJadwal(String asal, String tujuan) {
-        return penerbanganDAO.cariPenerbangan(asal, tujuan);
+    public List<Penerbangan> cariJadwal(String asal, String tujuan, String tanggal) {
+        return penerbanganDAO.cariPenerbangan(asal, tujuan, tanggal);
     }
 
     public List<String> lihatKursiTerisi(String idPenerbangan) {

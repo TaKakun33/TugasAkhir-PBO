@@ -25,10 +25,13 @@ public class MainCLI {
         System.out.print("Input Kota/Bandara Tujuan : ");
         String tujuan = scanner.nextLine();
         
-        List<Penerbangan> rute = controller.cariJadwal(asal, tujuan);
+        System.out.print("Input Tanggal (YYYY-MM-DD): ");
+        String tanggal = scanner.nextLine();
+        
+        List<Penerbangan> rute = controller.cariJadwal(asal, tujuan, tanggal);
         
         if (rute.isEmpty()) {
-            System.out.println("\n[INFO] Maaf, penerbangan dari " + asal + " ke " + tujuan + " tidak tersedia.");
+            System.out.println("\n[INFO] Maaf, penerbangan dari " + asal + " ke " + tujuan + " pada tanggal " + tanggal + " tidak tersedia.");
             return;
         }
 
@@ -76,7 +79,7 @@ public class MainCLI {
                 for (String huruf : hurufKursi) {
                     String kodeKursi = baris + huruf;
                     if (kursiTerisi.contains(kodeKursi)) {
-                        System.out.print("[ X ] ");
+                        System.out.print("[X ] ");
                     } else {
                         System.out.print("[" + kodeKursi + "] ");
                     }
@@ -94,7 +97,7 @@ public class MainCLI {
                 for (String huruf : hurufKursi) {
                     String kodeKursi = baris + huruf;
                     if (kursiTerisi.contains(kodeKursi)) {
-                        System.out.print("[ X ] ");
+                        System.out.print("[X ] ");
                     } else {
                         System.out.print("[" + kodeKursi + "] ");
                     }

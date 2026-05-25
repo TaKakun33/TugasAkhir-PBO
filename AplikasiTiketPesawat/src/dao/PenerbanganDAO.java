@@ -77,11 +77,14 @@ public class PenerbanganDAO {
         return daftarPenerbangan;
     }
     
-    public List<Penerbangan> cariPenerbangan(String kotaAsal, String kotaTujuan) {
+    public List<Penerbangan> cariPenerbangan(String kotaAsal, String kotaTujuan, String tanggal) {
         List<Penerbangan> daftar = new ArrayList<>();
         for (Penerbangan p : getAllPenerbangan()) {
             if (p.getAsal().getKota().equalsIgnoreCase(kotaAsal) && 
-                p.getTujuan().getKota().equalsIgnoreCase(kotaTujuan)) {
+                p.getTujuan().getKota().equalsIgnoreCase(kotaTujuan) &&
+                p.getWaktuKeberangkatan() != null && 
+                p.getWaktuKeberangkatan().startsWith(tanggal)) {
+                
                 daftar.add(p);
             }
         }
