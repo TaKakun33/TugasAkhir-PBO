@@ -47,21 +47,43 @@ public class MainCLI {
 
         if (penerbanganPilihan == null) {
             System.out.println("Gagal: Penerbangan dengan ID " + idPilih + " tidak ditemukan.");
-            return; // Hentikan program jika ID salah
+            return;
         }
 
-        // Jika rute ditemukan, lanjutkan meminta input lainnya
         System.out.print("Nama Penumpang       : ");
         String nama = scanner.nextLine();
         System.out.print("Nomor Frequent Flyer : ");
         String ff = scanner.nextLine();
-        System.out.print("Nomor Kursi          : ");
-        String kursi = scanner.nextLine();
+//        System.out.print("Nomor Kursi          : ");
+//        String kursi = scanner.nextLine();
+        String kursi = "";
+        boolean kursiValid = false;
+        
+        while (!kursiValid) {
+            System.out.print("Nomor Kursi (Misal: 12A, 29K) : ");
+            kursi = scanner.nextLine().toUpperCase();
+
+            // ^[1-9]     : Diawali angka 1-9
+            // [0-9]?     : Boleh diikuti satu angka lagi 0-9 (jadi max 99)
+            // [A-K]$     : Diakhiri huruf A sampai K
+            if (!kursi.matches("^[1-9][0-9]?[A-K]$")) {
+                System.out.println("   [Error] Format tidak valid! Gunakan angka dan 1 huruf (Contoh: 8C, 30F).");
+                continue;
+            }
+
+            boolean sudahTerisi = controller.cekKetersediaanKursi(penerbanganPilihan.getIdPenerbangan(), kursi);
+            
+            if (sudahTerisi) {
+                System.out.println("   [Error] Maaf, kursi " + kursi + " sudah dipesan! Silakan pilih kursi lain.");
+            } else {
+                kursiValid = true;
+            }
+        }
         
         System.out.println("Pilih Kelas Tiket:");
         System.out.println("  [1] Economy Class (Bagasi gratis s/d 20kg)");
         System.out.println("  [2] Business Class (Bagasi gratis s/d 30kg, Harga 150%)");
-        System.out.print("   Pilihan Anda (1/2)   : ");
+        System.out.print("  Pilihan Anda (1/2)   : ");
         int pilihanKelas = scanner.nextInt();
         
         System.out.print("Berat Bagasi (Kg)    : ");
@@ -73,18 +95,16 @@ public class MainCLI {
         Tiket tiketBaru; 
         
         if (pilihanKelas == 2) {
-            tiketBaru = new TiketBisnis(); // Wujud objek berubah menjadi Bisnis
+            tiketBaru = new TiketBisnis();
         } else {
-            tiketBaru = new TiketEkonomi(); // Wujud objek berubah menjadi Ekonomi
+            tiketBaru = new TiketEkonomi();
         }
 
-        // Setel semua data ke dalam objek tiket
         tiketBaru.setPenerbangan(penerbanganPilihan);
         tiketBaru.setNomorKursi(kursi);
         tiketBaru.setBeratBagasi(bagasi);
-        tiketBaru.setNomorEtkt("ETKT-" + System.currentTimeMillis()); // ETKT digenerate otomatis oleh sistem
-        
-        // Hitung total harga (akan otomatis menyesuaikan apakah dia Ekonomi/Bisnis)
+        tiketBaru.setNomorEtkt("ETKT-" + System.currentTimeMillis());
+
         tiketBaru.hitungTotalHarga();
 
         System.out.println("\nMemproses pemesanan ke database...");
@@ -101,7 +121,6 @@ public class MainCLI {
         loadingThread.start();
         try { loadingThread.join(); } catch (InterruptedException e) {}
 
-        // Simpan ke database
         boolean sukses = controller.prosesPesanTiket(nama, ff, tiketBaru);
         
         if (sukses) {

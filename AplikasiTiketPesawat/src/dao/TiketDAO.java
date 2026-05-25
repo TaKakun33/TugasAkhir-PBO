@@ -17,6 +17,26 @@ import java.sql.Statement;
 import model.Tiket;
 
 public class TiketDAO {
+    public boolean isKursiTerisi(String idPenerbangan, String nomorKursi) {
+        String query = "SELECT COUNT(*) FROM tiket WHERE id_penerbangan = ? AND nomor_kursi = ?";
+        
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(query)) {
+            
+            ps.setString(1, idPenerbangan);
+            ps.setString(2, nomorKursi);
+            
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1) > 0;
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error saat mengecek ketersediaan kursi: " + e.getMessage());
+        }
+        return false;
+    }
+    
     public boolean simpanTransaksiTiket(String namaPenumpang, String ffNumber, Tiket tiket) {
         String insertPenumpang = "INSERT INTO penumpang (nama, ff_number) VALUES (?, ?)";
         String insertTiket = "INSERT INTO tiket (id_penumpang, id_penerbangan, nomor_kursi, nomor_etkt, kelas_tiket, total_harga) VALUES (?, ?, ?, ?, ?, ?)";

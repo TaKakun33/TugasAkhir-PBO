@@ -26,6 +26,10 @@ public class TiketController {
     public List<Penerbangan> dapatkanDaftarPenerbangan() {
         return penerbanganDAO.getAllPenerbangan();
     }
+    
+    public boolean cekKetersediaanKursi(String idPenerbangan, String nomorKursi) {
+        return tiketDAO.isKursiTerisi(idPenerbangan, nomorKursi);
+    }
 
     public boolean prosesPesanTiket(String nama, String ffNumber, Tiket tiketTerpilih) {
         return tiketDAO.simpanTransaksiTiket(nama, ffNumber, tiketTerpilih);
