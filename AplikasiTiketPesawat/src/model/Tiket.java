@@ -11,6 +11,8 @@ package model;
 public abstract class Tiket {
     protected int idTiket;
     protected int idPenumpang;
+    protected String namaPenumpang;
+    protected String kategoriPenumpang;
     protected Penerbangan penerbangan;
     protected String nomorKursi;
     protected String nomorEtkt;
@@ -40,6 +42,22 @@ public abstract class Tiket {
     
     public void setIdPenumpang(int idPenumpang) {
         this.idPenumpang = idPenumpang;
+    }
+    
+    public String getNamaPenumpang() {
+        return namaPenumpang;
+    }
+    
+    public void setNamaPenumpang(String namaPenumpang) {
+        this.namaPenumpang = namaPenumpang;
+    }
+    
+    public String getKategoriPenumpang() {
+        return kategoriPenumpang;
+    }
+    
+    public void setKategoriPenumpang(String kategoriPenumpang) {
+        this.kategoriPenumpang = kategoriPenumpang;
     }
     
     public Penerbangan getPenerbangan() {

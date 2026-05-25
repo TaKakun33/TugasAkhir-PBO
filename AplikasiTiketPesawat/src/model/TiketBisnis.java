@@ -16,8 +16,14 @@ public class TiketBisnis extends Tiket {
 
     @Override
     public double hitungBiayaBagasiTambahan(int beratBagasi) {
-        if (beratBagasi > 30) {
-            return (beratBagasi - 30) * 75000;
+        if (kategoriPenumpang.equalsIgnoreCase("Bayi")) {
+            if (beratBagasi > 10) {
+                return (beratBagasi - 10) * 50000;
+            }
+        } else {
+            if (beratBagasi > 30) {
+                return (beratBagasi - 30) * 50000;
+            }
         }
         return 0;
     }

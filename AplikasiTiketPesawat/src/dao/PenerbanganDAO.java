@@ -75,6 +75,17 @@ public class PenerbanganDAO {
         }
         return daftarPenerbangan;
     }
+    
+    public List<Penerbangan> cariPenerbangan(String kotaAsal, String kotaTujuan) {
+        List<Penerbangan> daftar = new ArrayList<>();
+        for (Penerbangan p : getAllPenerbangan()) {
+            if (p.getAsal().getKota().equalsIgnoreCase(kotaAsal) && 
+                p.getTujuan().getKota().equalsIgnoreCase(kotaTujuan)) {
+                daftar.add(p);
+            }
+        }
+        return daftar;
+    }
 
     public boolean isRuteTersedia(String kodeAsal, String kodeTujuan) {
         String query = "SELECT COUNT(*) FROM penerbangan WHERE kode_bandara_asal = ? AND kode_bandara_tujuan = ?";

@@ -13,10 +13,29 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.Tiket;
 
 public class TiketDAO {
+    public List<String> getDaftarKursiTerisi(String idPenerbangan) {
+        List<String> kursiTerisi = new ArrayList<>();
+        String query = "SELECT nomor_kursi FROM tiket WHERE id_penerbangan = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setString(1, idPenerbangan);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    kursiTerisi.add(rs.getString("nomor_kursi"));
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        return kursiTerisi;
+    }
+    
     public boolean isKursiTerisi(String idPenerbangan, String nomorKursi) {
         String query = "SELECT COUNT(*) FROM tiket WHERE id_penerbangan = ? AND nomor_kursi = ?";
         
