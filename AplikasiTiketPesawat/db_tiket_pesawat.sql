@@ -1,6 +1,9 @@
 -- CREATE DATABASE db_tiket_pesawat;
 USE db_tiket_pesawat;
 
+create user 'AplikasiTiketPesawat'@'localhost' identified by '12345678';
+grant all privileges on db_tiket_pesawat.* to 'AplikasiTiketPesawat'@'localhost';
+
 -- Tabel bandara
 CREATE TABLE bandara (
     kode_bandara VARCHAR(3) PRIMARY KEY,
@@ -54,8 +57,15 @@ CREATE TABLE tiket (
 -- dummy data bandara
 INSERT INTO bandara (kode_bandara, nama_bandara, kota, negara) VALUES
 ('SYD', 'Kingsford Smith International Airport', 'Sydney', 'Australia'),
-('DPS', 'I Gusti Ngurah Rai International Airport', 'Denpasar-Bali', 'Indonesia'),
+('DPS', 'I Gusti Ngurah Rai International Airport', 'Denpasar', 'Indonesia'),
 ('CGK', 'Soekarno-Hatta International Airport', 'Jakarta', 'Indonesia');
+
+-- UPDATE bandara
+-- SET kota = 'Denpasar'
+-- WHERE kode_bandara = 'DPS';
+
+-- INSERT INTO bandara (kode_bandara, nama_bandara, kota, negara) VALUES
+-- ('DPS', 'I Gusti Ngurah Rai International Airport', 'Denpasar', 'Indonesia');
 
 -- dummy data pesawat
 INSERT INTO pesawat (nama_maskapai, jenis_pesawat, kapasitas) VALUES
@@ -66,3 +76,13 @@ INSERT INTO pesawat (nama_maskapai, jenis_pesawat, kapasitas) VALUES
 INSERT INTO penerbangan (id_penerbangan, kode_bandara_asal, kode_bandara_tujuan, gate, waktu_boarding, id_pesawat, harga_dasar) VALUES
 ('GA715', 'SYD', 'DPS', '37', '09:15 05JAN', 1, 7500000.00),
 ('GA411', 'DPS', 'CGK', '29', '15:05 05JAN', 1, 2000000.00);
+
+
+INSERT INTO penerbangan (id_penerbangan, kode_bandara_asal, kode_bandara_tujuan, gate, waktu_keberangkatan, waktu_boarding, id_pesawat, harga_dasar) 
+VALUES
+-- GA715 berangkat jam 10:15, waktu boarding otomatis di-set MySQL ke 09:15 (-1 Jam)
+('GA715', 'SYD', 'DPS', '37', '2026-06-22 10:15:00', DATE_SUB('2026-06-22 10:15:00', INTERVAL 1 HOUR), 1, 7500000.00),
+
+('GA411', 'DPS', 'CGK', '29', '2026-06-22 16:05:00', DATE_SUB('2026-06-22 16:05:00', INTERVAL 1 HOUR), 1, 2000000.00);
+
+SELECT* FROM tiket;
