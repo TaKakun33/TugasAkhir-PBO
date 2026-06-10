@@ -19,7 +19,7 @@ import javax.swing.*;
 /**
  * MainGUI - Sistem Pemesanan Tiket Pesawat
  * NetBeans JFrame Form style.
- * @author Generated
+ * @author AKM
  */
 public class MainGUI extends javax.swing.JFrame {
 
